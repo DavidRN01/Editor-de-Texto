@@ -26,6 +26,7 @@ public class Ventana extends javax.swing.JFrame {
     final JFileChooser fc = new JFileChooser();
     private File archivo;
     
+    
     /**
      * Creates new form Ventana
      */
@@ -42,6 +43,9 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        hechoPor = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -58,6 +62,15 @@ public class Ventana extends javax.swing.JFrame {
         color = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         autor = new javax.swing.JMenuItem();
+
+        hechoPor.setPreferredSize(new java.awt.Dimension(400, 200));
+        hechoPor.getContentPane().setLayout(new javax.swing.BoxLayout(hechoPor.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
+
+        jLabel1.setText("Hecho por David Ramos Navas");
+        hechoPor.getContentPane().add(jLabel1);
+
+        jTextField1.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
+        hechoPor.getContentPane().add(jTextField1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +132,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu2.setText("Acerca de...");
 
         autor.setText("Hecho por...");
+        autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autorActionPerformed(evt);
+            }
+        });
         jMenu2.add(autor);
 
         jMenuBar1.add(jMenu2);
@@ -180,6 +198,14 @@ public class Ventana extends javax.swing.JFrame {
         
     }//GEN-LAST:event_guardarActionPerformed
 
+    private void autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorActionPerformed
+        
+        //He hecho que el JDialog salga con un tamaño adecuado
+        hechoPor.setSize(400, 100);
+        hechoPor.setVisible(true);
+   
+    }//GEN-LAST:event_autorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,7 +236,11 @@ public class Ventana extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana().setVisible(true);
+                //Aqui he hecho un par de cambios para que la ventana
+                //salga con un tamaño mas adecuado
+                Ventana Ventana = new Ventana();
+                Ventana.setSize(600, 300);
+                Ventana.setVisible(true);
             }
         });
     }
@@ -222,7 +252,9 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem fuente;
     private javax.swing.JMenuItem guardar;
     private javax.swing.JMenuItem guardarComo;
+    private javax.swing.JDialog hechoPor;
     private javax.swing.JLabel info;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -230,6 +262,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem salir;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables

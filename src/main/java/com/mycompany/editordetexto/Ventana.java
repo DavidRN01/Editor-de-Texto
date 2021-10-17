@@ -5,12 +5,25 @@
  */
 package com.mycompany.editordetexto;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author david
  */
 public class Ventana extends javax.swing.JFrame {
 
+    //Atributos
+    final JFileChooser fc = new JFileChooser();
+    
     /**
      * Creates new form Ventana
      */
@@ -28,6 +41,8 @@ public class Ventana extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        texto = new javax.swing.JTextArea();
         info = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -44,16 +59,13 @@ public class Ventana extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 862, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        texto.setColumns(20);
+        texto.setRows(5);
+        jScrollPane1.setViewportView(texto);
+
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -63,6 +75,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         abrir.setText("Abrir");
+        abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirActionPerformed(evt);
+            }
+        });
         jMenu1.add(abrir);
 
         guardar.setText("Guardar");
@@ -73,6 +90,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         jMenu1.add(salir);
 
         jMenuBar1.add(jMenu1);
@@ -98,6 +120,42 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
+        
+        //Creo la ventana para seleccionar archivos
+        int status = fc.showOpenDialog(null);
+        
+        if(status == JFileChooser.APPROVE_OPTION) {
+            //Creo el objeto tipo file y le asigno el que sea seleccionado
+            File archivo = fc.getSelectedFile();
+            //Pongo en el label la informacion
+            info.setText("Tamaño: "+archivo.length()+" bytes Ubicación: "+archivo.getPath());
+            
+            //Leemos el archivo y lo mostramos en pantalla
+            try(BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+                
+                //Usamos el iterador para recorrer cada linea
+                Iterator<String> it = br.lines().iterator();
+                while(it.hasNext()) {
+                    //Creo un string para cada linea
+                    String linea = it.next();
+                    //Muestro en el text area cada linea
+                    texto.append(linea + "\n");
+                }
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_abrirActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,7 +205,9 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem salir;
+    private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ public class Ventana extends javax.swing.JFrame {
 
     //Atributos
     final JFileChooser fc = new JFileChooser();
+    private File archivo;
     
     /**
      * Creates new form Ventana
@@ -83,6 +85,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(abrir);
 
         guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
         jMenu1.add(guardar);
 
         guardarComo.setText("Guardar como");
@@ -128,7 +135,7 @@ public class Ventana extends javax.swing.JFrame {
         
         if(status == JFileChooser.APPROVE_OPTION) {
             //Creo el objeto tipo file y le asigno el que sea seleccionado
-            File archivo = fc.getSelectedFile();
+            archivo = fc.getSelectedFile();
             //Pongo en el label la informacion
             info.setText("Tamaño: "+archivo.length()+" bytes Ubicación: "+archivo.getPath());
             
@@ -156,6 +163,22 @@ public class Ventana extends javax.swing.JFrame {
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        
+        //Creamos un file writer
+        //Añadimos el parámetro false para que no añada nuevo texto, si no que
+        //lo reemplace
+        try(FileWriter fw = new FileWriter(archivo, false)) {
+            
+            //Sobreescribo el archivo
+            fw.write(texto.getText());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments

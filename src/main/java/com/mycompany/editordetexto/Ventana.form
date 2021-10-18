@@ -18,7 +18,7 @@
             <Property name="text" type="java.lang.String" value="Hecho por David Ramos Navas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="enlaceGit">
           <Properties>
             <Property name="text" type="java.lang.String" value="https://github.com/DavidRN01/Editor-de-Texto.git"/>
           </Properties>

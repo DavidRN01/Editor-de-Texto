@@ -52,7 +52,7 @@ public class Ventana extends javax.swing.JFrame {
 
         hechoPor = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        enlaceGit = new javax.swing.JTextField();
         colorChooser = new javax.swing.JDialog();
         colorSeleccionado = new javax.swing.JColorChooser();
         seleccionarColor = new javax.swing.JButton();
@@ -82,8 +82,8 @@ public class Ventana extends javax.swing.JFrame {
         jLabel1.setText("Hecho por David Ramos Navas");
         hechoPor.getContentPane().add(jLabel1);
 
-        jTextField1.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
-        hechoPor.getContentPane().add(jTextField1);
+        enlaceGit.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
+        hechoPor.getContentPane().add(enlaceGit);
 
         colorChooser.getContentPane().add(colorSeleccionado, java.awt.BorderLayout.CENTER);
 
@@ -251,6 +251,8 @@ public class Ventana extends javax.swing.JFrame {
         //He hecho que el JDialog salga con un tamaño adecuado
         hechoPor.setSize(400, 100);
         hechoPor.setVisible(true);
+        
+        enlaceGit.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
    
     }//GEN-LAST:event_autorActionPerformed
 
@@ -359,6 +361,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem color;
     private javax.swing.JDialog colorChooser;
     private javax.swing.JColorChooser colorSeleccionado;
+    private javax.swing.JTextField enlaceGit;
     private javax.swing.JDialog fontChooser;
     private javax.swing.JTextField fontSize;
     private javax.swing.JMenuItem fuente;
@@ -374,7 +377,6 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem salir;
     private javax.swing.JButton seleccionarColor;
     private javax.swing.JToggleButton seleccionarTamanho;

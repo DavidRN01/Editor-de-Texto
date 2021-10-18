@@ -65,6 +65,7 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         fontName = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
+        botonColor = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -90,6 +91,7 @@ public class Ventana extends javax.swing.JFrame {
         enlaceGit.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
         hechoPor.getContentPane().add(enlaceGit);
 
+        colorChooser.setResizable(false);
         colorChooser.getContentPane().add(colorSeleccionado, java.awt.BorderLayout.CENTER);
 
         seleccionarColor.setText("Seleccionar Color");
@@ -136,12 +138,21 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel3.setText("Tipo de fuente (algunas no se ven)");
 
+        botonColor.setText("Color");
+        botonColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonColorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout formatoLayout = new javax.swing.GroupLayout(formato.getContentPane());
         formato.getContentPane().setLayout(formatoLayout);
         formatoLayout.setHorizontalGroup(
             formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formatoLayout.createSequentialGroup()
-                .addGap(123, 123, 123)
+                .addGap(20, 20, 20)
+                .addComponent(botonColor)
+                .addGap(28, 28, 28)
                 .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -149,7 +160,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         formatoLayout.setVerticalGroup(
             formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +173,9 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                     .addGroup(formatoLayout.createSequentialGroup()
-                        .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonColor))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -341,16 +354,9 @@ public class Ventana extends javax.swing.JFrame {
 
     private void fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuenteActionPerformed
         
-        System.out.println(texto.getFont().getName());
+        //Saco la ventana con las opciones de formato
         formato.setVisible(true);
-//        //Ajusto la ventana y la hago visible
-//        fontChooser.setSize(100, 100);
-//        fontChooser.setVisible(true);
-//        
-//        //Pongo en el texto el tamaño actual de la fuente
-//        tamanhoFuente = ""+texto.getFont().getSize();
-//        fontSize.setText(tamanhoFuente);
-        
+
     }//GEN-LAST:event_fuenteActionPerformed
 
     private void seleccionarTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarTamanhoActionPerformed
@@ -367,6 +373,8 @@ public class Ventana extends javax.swing.JFrame {
 
     private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
         
+        //Guardo el tamaño en una variable, creo un Font con ese dato
+        //y se lo asigno al texto
         int tamanho = (int) spinner.getValue();
         Font f = new Font(texto.getFont().getName(), texto.getFont().getStyle(), tamanho);
         texto.setFont(f);
@@ -375,10 +383,18 @@ public class Ventana extends javax.swing.JFrame {
 
     private void fontNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fontNameMouseClicked
         
+        //Creo un Font con el nombre que este seleccionado y lo asigno al texto
         Font f = new Font(fontName.getSelectedValue(), texto.getFont().getStyle(),  texto.getFont().getSize());
         texto.setFont(f);
         
     }//GEN-LAST:event_fontNameMouseClicked
+
+    private void botonColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColorActionPerformed
+        
+        colorChooser.setSize(700, 400);
+        colorChooser.setVisible(true);
+        
+    }//GEN-LAST:event_botonColorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,6 +438,7 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrir;
     private javax.swing.JMenuItem autor;
+    private javax.swing.JButton botonColor;
     private javax.swing.JDialog colorChooser;
     private javax.swing.JColorChooser colorSeleccionado;
     private javax.swing.JTextField enlaceGit;

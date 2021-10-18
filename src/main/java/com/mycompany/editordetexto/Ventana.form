@@ -26,6 +26,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="colorChooser">
+      <Properties>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
@@ -89,7 +92,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="botonColor" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -99,7 +104,7 @@
                       <Component id="spinner" min="-2" pref="93" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -115,7 +120,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" pref="266" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="spinner" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="spinner" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="botonColor" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -354,6 +362,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Tipo de fuente (algunas no se ven)"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonColor">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Color"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonColorActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

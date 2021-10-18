@@ -56,9 +56,6 @@ public class Ventana extends javax.swing.JFrame {
         colorChooser = new javax.swing.JDialog();
         colorSeleccionado = new javax.swing.JColorChooser();
         seleccionarColor = new javax.swing.JButton();
-        fontChooser = new javax.swing.JDialog();
-        fontSize = new javax.swing.JTextField();
-        seleccionarTamanho = new javax.swing.JToggleButton();
         formato = new javax.swing.JDialog();
         spinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +63,10 @@ public class Ventana extends javax.swing.JFrame {
         fontName = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         botonColor = new javax.swing.JButton();
+        capitalizacion = new javax.swing.JDialog();
+        mayus = new javax.swing.JButton();
+        minus = new javax.swing.JButton();
+        camel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -79,10 +80,11 @@ public class Ventana extends javax.swing.JFrame {
         salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         fuente = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        caseMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         autor = new javax.swing.JMenuItem();
 
-        hechoPor.setPreferredSize(new java.awt.Dimension(400, 200));
         hechoPor.getContentPane().setLayout(new javax.swing.BoxLayout(hechoPor.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jLabel1.setText("Hecho por David Ramos Navas");
@@ -101,16 +103,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         colorChooser.getContentPane().add(seleccionarColor, java.awt.BorderLayout.PAGE_END);
-
-        fontChooser.getContentPane().add(fontSize, java.awt.BorderLayout.CENTER);
-
-        seleccionarTamanho.setText("Seleccionar Tamaño");
-        seleccionarTamanho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionarTamanhoActionPerformed(evt);
-            }
-        });
-        fontChooser.getContentPane().add(seleccionarTamanho, java.awt.BorderLayout.PAGE_END);
 
         formato.setMinimumSize(new java.awt.Dimension(500, 350));
         formato.setResizable(false);
@@ -180,6 +172,48 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        capitalizacion.setResizable(false);
+
+        mayus.setText("Mayúsculas");
+        mayus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mayusActionPerformed(evt);
+            }
+        });
+
+        minus.setText("Minúsculas");
+        minus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minusActionPerformed(evt);
+            }
+        });
+
+        camel.setText("Camel Case");
+
+        javax.swing.GroupLayout capitalizacionLayout = new javax.swing.GroupLayout(capitalizacion.getContentPane());
+        capitalizacion.getContentPane().setLayout(capitalizacionLayout);
+        capitalizacionLayout.setHorizontalGroup(
+            capitalizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(capitalizacionLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(mayus)
+                .addGap(43, 43, 43)
+                .addComponent(minus)
+                .addGap(52, 52, 52)
+                .addComponent(camel)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        capitalizacionLayout.setVerticalGroup(
+            capitalizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(capitalizacionLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(capitalizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mayus)
+                    .addComponent(minus)
+                    .addComponent(camel))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -241,6 +275,15 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         jMenu3.add(fuente);
+        jMenu3.add(jSeparator2);
+
+        caseMenu.setText("Capitalización");
+        caseMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(caseMenu);
 
         jMenuBar1.add(jMenu3);
 
@@ -359,18 +402,6 @@ public class Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_fuenteActionPerformed
 
-    private void seleccionarTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarTamanhoActionPerformed
-        
-        //Convierto lo que haya escrito en el text field a entero
-        //y se lo paso a una nueva fuente
-        int t = parseInt(fontSize.getText());
-        Font f = new Font(texto.getFont().getName(), texto.getFont().getStyle(), t);
-        //Le pongo la nueva fuente al texto
-        texto.setFont(f);
-        
-        
-    }//GEN-LAST:event_seleccionarTamanhoActionPerformed
-
     private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
         
         //Guardo el tamaño en una variable, creo un Font con ese dato
@@ -395,6 +426,25 @@ public class Ventana extends javax.swing.JFrame {
         colorChooser.setVisible(true);
         
     }//GEN-LAST:event_botonColorActionPerformed
+
+    private void caseMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseMenuActionPerformed
+        
+        capitalizacion.setSize(430, 120);
+        capitalizacion.setVisible(true);
+        
+    }//GEN-LAST:event_caseMenuActionPerformed
+
+    private void mayusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mayusActionPerformed
+        
+        texto.setText(texto.getText().toUpperCase());
+        
+    }//GEN-LAST:event_mayusActionPerformed
+
+    private void minusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusActionPerformed
+        
+        texto.setText(texto.getText().toLowerCase());
+        
+    }//GEN-LAST:event_minusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,12 +489,13 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem abrir;
     private javax.swing.JMenuItem autor;
     private javax.swing.JButton botonColor;
+    private javax.swing.JButton camel;
+    private javax.swing.JDialog capitalizacion;
+    private javax.swing.JMenuItem caseMenu;
     private javax.swing.JDialog colorChooser;
     private javax.swing.JColorChooser colorSeleccionado;
     private javax.swing.JTextField enlaceGit;
-    private javax.swing.JDialog fontChooser;
     private javax.swing.JList<String> fontName;
-    private javax.swing.JTextField fontSize;
     private javax.swing.JDialog formato;
     private javax.swing.JMenuItem fuente;
     private javax.swing.JMenuItem guardar;
@@ -462,9 +513,11 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JButton mayus;
+    private javax.swing.JButton minus;
     private javax.swing.JMenuItem salir;
     private javax.swing.JButton seleccionarColor;
-    private javax.swing.JToggleButton seleccionarTamanho;
     private javax.swing.JSpinner spinner;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables

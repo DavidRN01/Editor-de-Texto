@@ -62,6 +62,9 @@ public class Ventana extends javax.swing.JFrame {
         formato = new javax.swing.JDialog();
         spinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fontName = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -119,25 +122,49 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel2.setText("Tamaño Fuente");
 
+        fontName.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Abadi MT Condensed Extra Bold", "Abadi MT Condensed Light", "Academy Engraved LET", "Al Bayan", "American Typewriter", "Andale Mono", "Apple Casual", "Apple Chancery", "Apple LiGothic", "Apple LiSung", "Apple Symbols", "AppleGothic", "AppleMyungjo", "Arial", "Arial Black", "Arial Hebrew", "Arial Narrow", "Arial Rounded MT Bold", "Ayuthaya", "Baghdad", "Bank Gothic", "Baskerville", "Baskerville Old Face", "Batang", "Bauhaus 93", "Bell MT", "Bernard MT Condensed", "BiauKai", "Big Caslon", "Bitstream Vera Sans", "Bitstream Vera Sans Mono", "Bitstream Vera Serif", "Blackmoor LET", "BlairMdITC TT", "Bodoni Ornaments ITC TT", "Bodoni SvtyTwo ITC TT", "Bodoni SvtyTwo OS ITC TT", "Bodoni SvtyTwo SC ITC TT", "Book Antiqua", "Bookman Old Style", "Bordeaux Roman Bold LET", "Bradley Hand ITC TT", "Braggadocio", "Britannic Bold", "Brush Script MT", "Calisto MT", "Century", "Century Gothic", "Century Schoolbook", "Chalkboard", "Charcoal CY", "Cochin", "Colonna MT", "Comic Sans MS", "Cooper Black", "Copperplate", "Copperplate Gothic Bold", "Copperplate Gothic Light", "Corsiva Hebrew", "Courier", "Courier New", "Cracked", "Curlz MT", "DecoType Naskh", "Desdemona", "Devanagari MT", "Dialog", "DialogInput", "Didot", "Edwardian Script ITC", "Engravers MT", "Euphemia UCAS", "Eurostile", "Footlight MT Light", "Futura", "Garamond", "GB18030 Bitmap", "Geeza Pro", "Geneva", "Geneva CY", "Georgia", "Gill Sans", "Gill Sans Ultra Bold", "Gloucester MT Extra Condensed", "Goudy Old Style", "Gujarati MT", "Gulim", "Gurmukhi MT", "Haettenschweiler", "Handwriting - Dakota", "Harrington", "Hei", "Helvetica", "Helvetica CY", "Helvetica Neue", "Herculanum", "Hiragino Kaku Gothic Pro", "Hiragino Kaku Gothic Std", "Hiragino Maru Gothic Pro", "Hiragino Mincho Pro", "Hoefler Text", "Impact", "Imprint MT Shadow", "InaiMathi", "Jazz LET", "Kai", "Kino MT", "Krungthep", "KufiStandardGK", "LiHei Pro", "LiSong Pro", "Lucida Blackletter", "Lucida Bright", "Lucida Calligraphy", "Lucida Fax", "Lucida Grande", "Lucida Handwriting", "Lucida Sans", "Lucida Sans Typewriter", "Marker Felt", "Matura MT Script Capitals", "Mistral", "Modern No. 20", "Mona Lisa Solid ITC TT", "Monaco", "Monospaced", "Monotype Corsiva", "Monotype Sorts", "MS Gothic", "MS Mincho", "MS PGothic", "MS PMincho", "Mshtakan", "MT Extra", "Nadeem", "New Peninim MT", "News Gothic MT", "Onyx", "OpenSymbol", "Optima", "Osaka", "Palatino", "Papyrus", "Party LET", "Perpetua Titling MT", "Plantagenet Cherokee", "Playbill", "PMingLiU", "PortagoITC TT", "Princetown LET", "Raanana", "Rockwell", "Rockwell Extra Bold", "SansSerif", "Santa Fe LET", "Sathu", "Savoye LET", "SchoolHouse Cursive B", "SchoolHouse Printed A", "Serif", "Silom", "SimSun", "Skia", "Snell Roundhand", "Stencil", "STFangsong", "STHeiti", "STKaiti", "Stone Sans ITC TT", "Stone Sans Sem ITC TT", "STSong", "Symbol", "Synchro LET", "Tahoma", "Thonburi", "Times", "Times New Roman", "Trebuchet MS", "Type Embellishments One LET", "Verdana", "Webdings", "Wide Latin", "Wingdings", "Wingdings 2", "Wingdings 3", "Zapf Dingbats", "Zapfino" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        fontName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fontNameMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(fontName);
+
+        jLabel3.setText("Tipo de fuente (algunas no se ven)");
+
         javax.swing.GroupLayout formatoLayout = new javax.swing.GroupLayout(formato.getContentPane());
         formato.getContentPane().setLayout(formatoLayout);
         formatoLayout.setHorizontalGroup(
             formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formatoLayout.createSequentialGroup()
-                .addContainerGap(275, Short.MAX_VALUE)
+                .addGap(123, 123, 123)
                 .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(33, 33, 33)
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         formatoLayout.setVerticalGroup(
             formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formatoLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
+                .addContainerGap()
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                    .addGroup(formatoLayout.createSequentialGroup()
+                        .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -314,7 +341,7 @@ public class Ventana extends javax.swing.JFrame {
 
     private void fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuenteActionPerformed
         
-        
+        System.out.println(texto.getFont().getName());
         formato.setVisible(true);
 //        //Ajusto la ventana y la hago visible
 //        fontChooser.setSize(100, 100);
@@ -335,6 +362,7 @@ public class Ventana extends javax.swing.JFrame {
         //Le pongo la nueva fuente al texto
         texto.setFont(f);
         
+        
     }//GEN-LAST:event_seleccionarTamanhoActionPerformed
 
     private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
@@ -344,6 +372,13 @@ public class Ventana extends javax.swing.JFrame {
         texto.setFont(f);
         
     }//GEN-LAST:event_spinnerStateChanged
+
+    private void fontNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fontNameMouseClicked
+        
+        Font f = new Font(fontName.getSelectedValue(), texto.getFont().getStyle(),  texto.getFont().getSize());
+        texto.setFont(f);
+        
+    }//GEN-LAST:event_fontNameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -391,6 +426,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JColorChooser colorSeleccionado;
     private javax.swing.JTextField enlaceGit;
     private javax.swing.JDialog fontChooser;
+    private javax.swing.JList<String> fontName;
     private javax.swing.JTextField fontSize;
     private javax.swing.JDialog formato;
     private javax.swing.JMenuItem fuente;
@@ -400,12 +436,14 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem salir;
     private javax.swing.JButton seleccionarColor;

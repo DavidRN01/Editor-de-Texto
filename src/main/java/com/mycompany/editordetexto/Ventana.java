@@ -189,6 +189,11 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         camel.setText("Camel Case");
+        camel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                camelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout capitalizacionLayout = new javax.swing.GroupLayout(capitalizacion.getContentPane());
         capitalizacion.getContentPane().setLayout(capitalizacionLayout);
@@ -445,6 +450,20 @@ public class Ventana extends javax.swing.JFrame {
         texto.setText(texto.getText().toLowerCase());
         
     }//GEN-LAST:event_minusActionPerformed
+
+    private void camelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camelActionPerformed
+        
+        //Creo un string con cada palabra sin espacios
+        String[] palabras = texto.getText().toLowerCase().split("\\ ");
+        //Dejo el texto vacio
+        texto.setText("");
+        for(String palabra : palabras) {
+            //Voy añadiendo cada palabra reemplazando la primera letra por una
+            //mayúsucula
+            texto.append(palabra.replace(palabra.subSequence(0, 1), palabra.toUpperCase().subSequence(0, 1)));
+        }
+        
+    }//GEN-LAST:event_camelActionPerformed
 
     /**
      * @param args the command line arguments

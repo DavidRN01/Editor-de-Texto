@@ -59,6 +59,13 @@ public class Ventana extends javax.swing.JFrame {
         fontChooser = new javax.swing.JDialog();
         fontSize = new javax.swing.JTextField();
         seleccionarTamanho = new javax.swing.JToggleButton();
+        formato = new javax.swing.JDialog();
+        spinner = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fontName = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        botonColor = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -72,7 +79,6 @@ public class Ventana extends javax.swing.JFrame {
         salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         fuente = new javax.swing.JMenuItem();
-        color = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         autor = new javax.swing.JMenuItem();
 
@@ -85,6 +91,7 @@ public class Ventana extends javax.swing.JFrame {
         enlaceGit.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
         hechoPor.getContentPane().add(enlaceGit);
 
+        colorChooser.setResizable(false);
         colorChooser.getContentPane().add(colorSeleccionado, java.awt.BorderLayout.CENTER);
 
         seleccionarColor.setText("Seleccionar Color");
@@ -104,6 +111,74 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         fontChooser.getContentPane().add(seleccionarTamanho, java.awt.BorderLayout.PAGE_END);
+
+        formato.setMinimumSize(new java.awt.Dimension(500, 350));
+        formato.setResizable(false);
+
+        spinner.setValue(12);
+        spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinnerStateChanged(evt);
+            }
+        });
+
+        jLabel2.setText("Tamaño Fuente");
+
+        fontName.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Abadi MT Condensed Extra Bold", "Abadi MT Condensed Light", "Academy Engraved LET", "Al Bayan", "American Typewriter", "Andale Mono", "Apple Casual", "Apple Chancery", "Apple LiGothic", "Apple LiSung", "Apple Symbols", "AppleGothic", "AppleMyungjo", "Arial", "Arial Black", "Arial Hebrew", "Arial Narrow", "Arial Rounded MT Bold", "Ayuthaya", "Baghdad", "Bank Gothic", "Baskerville", "Baskerville Old Face", "Batang", "Bauhaus 93", "Bell MT", "Bernard MT Condensed", "BiauKai", "Big Caslon", "Bitstream Vera Sans", "Bitstream Vera Sans Mono", "Bitstream Vera Serif", "Blackmoor LET", "BlairMdITC TT", "Bodoni Ornaments ITC TT", "Bodoni SvtyTwo ITC TT", "Bodoni SvtyTwo OS ITC TT", "Bodoni SvtyTwo SC ITC TT", "Book Antiqua", "Bookman Old Style", "Bordeaux Roman Bold LET", "Bradley Hand ITC TT", "Braggadocio", "Britannic Bold", "Brush Script MT", "Calisto MT", "Century", "Century Gothic", "Century Schoolbook", "Chalkboard", "Charcoal CY", "Cochin", "Colonna MT", "Comic Sans MS", "Cooper Black", "Copperplate", "Copperplate Gothic Bold", "Copperplate Gothic Light", "Corsiva Hebrew", "Courier", "Courier New", "Cracked", "Curlz MT", "DecoType Naskh", "Desdemona", "Devanagari MT", "Dialog", "DialogInput", "Didot", "Edwardian Script ITC", "Engravers MT", "Euphemia UCAS", "Eurostile", "Footlight MT Light", "Futura", "Garamond", "GB18030 Bitmap", "Geeza Pro", "Geneva", "Geneva CY", "Georgia", "Gill Sans", "Gill Sans Ultra Bold", "Gloucester MT Extra Condensed", "Goudy Old Style", "Gujarati MT", "Gulim", "Gurmukhi MT", "Haettenschweiler", "Handwriting - Dakota", "Harrington", "Hei", "Helvetica", "Helvetica CY", "Helvetica Neue", "Herculanum", "Hiragino Kaku Gothic Pro", "Hiragino Kaku Gothic Std", "Hiragino Maru Gothic Pro", "Hiragino Mincho Pro", "Hoefler Text", "Impact", "Imprint MT Shadow", "InaiMathi", "Jazz LET", "Kai", "Kino MT", "Krungthep", "KufiStandardGK", "LiHei Pro", "LiSong Pro", "Lucida Blackletter", "Lucida Bright", "Lucida Calligraphy", "Lucida Fax", "Lucida Grande", "Lucida Handwriting", "Lucida Sans", "Lucida Sans Typewriter", "Marker Felt", "Matura MT Script Capitals", "Mistral", "Modern No. 20", "Mona Lisa Solid ITC TT", "Monaco", "Monospaced", "Monotype Corsiva", "Monotype Sorts", "MS Gothic", "MS Mincho", "MS PGothic", "MS PMincho", "Mshtakan", "MT Extra", "Nadeem", "New Peninim MT", "News Gothic MT", "Onyx", "OpenSymbol", "Optima", "Osaka", "Palatino", "Papyrus", "Party LET", "Perpetua Titling MT", "Plantagenet Cherokee", "Playbill", "PMingLiU", "PortagoITC TT", "Princetown LET", "Raanana", "Rockwell", "Rockwell Extra Bold", "SansSerif", "Santa Fe LET", "Sathu", "Savoye LET", "SchoolHouse Cursive B", "SchoolHouse Printed A", "Serif", "Silom", "SimSun", "Skia", "Snell Roundhand", "Stencil", "STFangsong", "STHeiti", "STKaiti", "Stone Sans ITC TT", "Stone Sans Sem ITC TT", "STSong", "Symbol", "Synchro LET", "Tahoma", "Thonburi", "Times", "Times New Roman", "Trebuchet MS", "Type Embellishments One LET", "Verdana", "Webdings", "Wide Latin", "Wingdings", "Wingdings 2", "Wingdings 3", "Zapf Dingbats", "Zapfino" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        fontName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fontNameMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(fontName);
+
+        jLabel3.setText("Tipo de fuente (algunas no se ven)");
+
+        botonColor.setText("Color");
+        botonColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonColorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout formatoLayout = new javax.swing.GroupLayout(formato.getContentPane());
+        formato.getContentPane().setLayout(formatoLayout);
+        formatoLayout.setHorizontalGroup(
+            formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formatoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(botonColor)
+                .addGap(28, 28, 28)
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(33, 33, 33)
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        formatoLayout.setVerticalGroup(
+            formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formatoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                    .addGroup(formatoLayout.createSequentialGroup()
+                        .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonColor))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,14 +241,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         jMenu3.add(fuente);
-
-        color.setText("Color");
-        color.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                colorActionPerformed(evt);
-            }
-        });
-        jMenu3.add(color);
 
         jMenuBar1.add(jMenu3);
 
@@ -277,14 +344,6 @@ public class Ventana extends javax.swing.JFrame {
         
     }//GEN-LAST:event_guardarComoActionPerformed
 
-    private void colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorActionPerformed
-        
-        //Ajusto la ventana y la hago visible
-        colorChooser.setSize(600, 300);
-        colorChooser.setVisible(true);
-        
-    }//GEN-LAST:event_colorActionPerformed
-
     private void seleccionarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarColorActionPerformed
         
         //Guardo el color de la fuente y se la pongo al texto
@@ -295,14 +354,9 @@ public class Ventana extends javax.swing.JFrame {
 
     private void fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuenteActionPerformed
         
-        //Ajusto la ventana y la hago visible
-        fontChooser.setSize(100, 100);
-        fontChooser.setVisible(true);
-        
-        //Pongo en el texto el tamaño actual de la fuente
-        tamanhoFuente = ""+texto.getFont().getSize();
-        fontSize.setText(tamanhoFuente);
-        
+        //Saco la ventana con las opciones de formato
+        formato.setVisible(true);
+
     }//GEN-LAST:event_fuenteActionPerformed
 
     private void seleccionarTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarTamanhoActionPerformed
@@ -314,7 +368,33 @@ public class Ventana extends javax.swing.JFrame {
         //Le pongo la nueva fuente al texto
         texto.setFont(f);
         
+        
     }//GEN-LAST:event_seleccionarTamanhoActionPerformed
+
+    private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
+        
+        //Guardo el tamaño en una variable, creo un Font con ese dato
+        //y se lo asigno al texto
+        int tamanho = (int) spinner.getValue();
+        Font f = new Font(texto.getFont().getName(), texto.getFont().getStyle(), tamanho);
+        texto.setFont(f);
+        
+    }//GEN-LAST:event_spinnerStateChanged
+
+    private void fontNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fontNameMouseClicked
+        
+        //Creo un Font con el nombre que este seleccionado y lo asigno al texto
+        Font f = new Font(fontName.getSelectedValue(), texto.getFont().getStyle(),  texto.getFont().getSize());
+        texto.setFont(f);
+        
+    }//GEN-LAST:event_fontNameMouseClicked
+
+    private void botonColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColorActionPerformed
+        
+        colorChooser.setSize(700, 400);
+        colorChooser.setVisible(true);
+        
+    }//GEN-LAST:event_botonColorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,28 +438,34 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrir;
     private javax.swing.JMenuItem autor;
-    private javax.swing.JMenuItem color;
+    private javax.swing.JButton botonColor;
     private javax.swing.JDialog colorChooser;
     private javax.swing.JColorChooser colorSeleccionado;
     private javax.swing.JTextField enlaceGit;
     private javax.swing.JDialog fontChooser;
+    private javax.swing.JList<String> fontName;
     private javax.swing.JTextField fontSize;
+    private javax.swing.JDialog formato;
     private javax.swing.JMenuItem fuente;
     private javax.swing.JMenuItem guardar;
     private javax.swing.JMenuItem guardarComo;
     private javax.swing.JDialog hechoPor;
     private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem salir;
     private javax.swing.JButton seleccionarColor;
     private javax.swing.JToggleButton seleccionarTamanho;
+    private javax.swing.JSpinner spinner;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables
 }

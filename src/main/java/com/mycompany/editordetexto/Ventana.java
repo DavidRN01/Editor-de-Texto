@@ -59,6 +59,9 @@ public class Ventana extends javax.swing.JFrame {
         fontChooser = new javax.swing.JDialog();
         fontSize = new javax.swing.JTextField();
         seleccionarTamanho = new javax.swing.JToggleButton();
+        formato = new javax.swing.JDialog();
+        spinner = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -72,7 +75,6 @@ public class Ventana extends javax.swing.JFrame {
         salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         fuente = new javax.swing.JMenuItem();
-        color = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         autor = new javax.swing.JMenuItem();
 
@@ -104,6 +106,39 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         fontChooser.getContentPane().add(seleccionarTamanho, java.awt.BorderLayout.PAGE_END);
+
+        formato.setMinimumSize(new java.awt.Dimension(500, 350));
+        formato.setResizable(false);
+
+        spinner.setValue(12);
+        spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinnerStateChanged(evt);
+            }
+        });
+
+        jLabel2.setText("Tamaño Fuente");
+
+        javax.swing.GroupLayout formatoLayout = new javax.swing.GroupLayout(formato.getContentPane());
+        formato.getContentPane().setLayout(formatoLayout);
+        formatoLayout.setHorizontalGroup(
+            formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formatoLayout.createSequentialGroup()
+                .addContainerGap(275, Short.MAX_VALUE)
+                .addGroup(formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+        );
+        formatoLayout.setVerticalGroup(
+            formatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formatoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,14 +201,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         jMenu3.add(fuente);
-
-        color.setText("Color");
-        color.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                colorActionPerformed(evt);
-            }
-        });
-        jMenu3.add(color);
 
         jMenuBar1.add(jMenu3);
 
@@ -277,14 +304,6 @@ public class Ventana extends javax.swing.JFrame {
         
     }//GEN-LAST:event_guardarComoActionPerformed
 
-    private void colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorActionPerformed
-        
-        //Ajusto la ventana y la hago visible
-        colorChooser.setSize(600, 300);
-        colorChooser.setVisible(true);
-        
-    }//GEN-LAST:event_colorActionPerformed
-
     private void seleccionarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarColorActionPerformed
         
         //Guardo el color de la fuente y se la pongo al texto
@@ -295,13 +314,15 @@ public class Ventana extends javax.swing.JFrame {
 
     private void fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuenteActionPerformed
         
-        //Ajusto la ventana y la hago visible
-        fontChooser.setSize(100, 100);
-        fontChooser.setVisible(true);
         
-        //Pongo en el texto el tamaño actual de la fuente
-        tamanhoFuente = ""+texto.getFont().getSize();
-        fontSize.setText(tamanhoFuente);
+        formato.setVisible(true);
+//        //Ajusto la ventana y la hago visible
+//        fontChooser.setSize(100, 100);
+//        fontChooser.setVisible(true);
+//        
+//        //Pongo en el texto el tamaño actual de la fuente
+//        tamanhoFuente = ""+texto.getFont().getSize();
+//        fontSize.setText(tamanhoFuente);
         
     }//GEN-LAST:event_fuenteActionPerformed
 
@@ -315,6 +336,14 @@ public class Ventana extends javax.swing.JFrame {
         texto.setFont(f);
         
     }//GEN-LAST:event_seleccionarTamanhoActionPerformed
+
+    private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
+        
+        int tamanho = (int) spinner.getValue();
+        Font f = new Font(texto.getFont().getName(), texto.getFont().getStyle(), tamanho);
+        texto.setFont(f);
+        
+    }//GEN-LAST:event_spinnerStateChanged
 
     /**
      * @param args the command line arguments
@@ -358,18 +387,19 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrir;
     private javax.swing.JMenuItem autor;
-    private javax.swing.JMenuItem color;
     private javax.swing.JDialog colorChooser;
     private javax.swing.JColorChooser colorSeleccionado;
     private javax.swing.JTextField enlaceGit;
     private javax.swing.JDialog fontChooser;
     private javax.swing.JTextField fontSize;
+    private javax.swing.JDialog formato;
     private javax.swing.JMenuItem fuente;
     private javax.swing.JMenuItem guardar;
     private javax.swing.JMenuItem guardarComo;
     private javax.swing.JDialog hechoPor;
     private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -380,6 +410,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem salir;
     private javax.swing.JButton seleccionarColor;
     private javax.swing.JToggleButton seleccionarTamanho;
+    private javax.swing.JSpinner spinner;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables
 }

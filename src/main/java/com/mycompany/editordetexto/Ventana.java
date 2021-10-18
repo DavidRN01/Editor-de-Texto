@@ -5,6 +5,7 @@
  */
 package com.mycompany.editordetexto;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,8 +15,10 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -24,9 +27,9 @@ import javax.swing.JFrame;
 public class Ventana extends javax.swing.JFrame {
 
     //Atributos
-    final JFileChooser fc = new JFileChooser();
+    private JFileChooser fc = new JFileChooser();
     private File archivo;
-    
+    private Color colorFuente = Color.BLACK;
     
     /**
      * Creates new form Ventana
@@ -47,6 +50,9 @@ public class Ventana extends javax.swing.JFrame {
         hechoPor = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        colorChooser = new javax.swing.JDialog();
+        colorSeleccionado = new javax.swing.JColorChooser();
+        seleccionarColor = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -64,6 +70,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         autor = new javax.swing.JMenuItem();
 
+        hechoPor.setPreferredSize(new java.awt.Dimension(400, 200));
         hechoPor.getContentPane().setLayout(new javax.swing.BoxLayout(hechoPor.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jLabel1.setText("Hecho por David Ramos Navas");
@@ -71,6 +78,16 @@ public class Ventana extends javax.swing.JFrame {
 
         jTextField1.setText("https://github.com/DavidRN01/Editor-de-Texto.git");
         hechoPor.getContentPane().add(jTextField1);
+
+        colorChooser.getContentPane().add(colorSeleccionado, java.awt.BorderLayout.CENTER);
+
+        seleccionarColor.setText("Seleccionar Color");
+        seleccionarColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionarColorActionPerformed(evt);
+            }
+        });
+        colorChooser.getContentPane().add(seleccionarColor, java.awt.BorderLayout.PAGE_END);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +147,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu3.add(fuente);
 
         color.setText("Color");
+        color.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorActionPerformed(evt);
+            }
+        });
         jMenu3.add(color);
 
         jMenuBar1.add(jMenu3);
@@ -232,6 +254,22 @@ public class Ventana extends javax.swing.JFrame {
         
     }//GEN-LAST:event_guardarComoActionPerformed
 
+    private void colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorActionPerformed
+        
+        //Ajusto la ventana y la hago visible
+        colorChooser.setSize(600, 300);
+        colorChooser.setVisible(true);
+        
+    }//GEN-LAST:event_colorActionPerformed
+
+    private void seleccionarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarColorActionPerformed
+        
+        //Guardo el color de la fuente y se la pongo al texto
+        colorFuente = colorSeleccionado.getColor();
+        texto.setForeground(colorFuente);
+        
+    }//GEN-LAST:event_seleccionarColorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,6 +313,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem abrir;
     private javax.swing.JMenuItem autor;
     private javax.swing.JMenuItem color;
+    private javax.swing.JDialog colorChooser;
+    private javax.swing.JColorChooser colorSeleccionado;
     private javax.swing.JMenuItem fuente;
     private javax.swing.JMenuItem guardar;
     private javax.swing.JMenuItem guardarComo;
@@ -290,6 +330,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem salir;
+    private javax.swing.JButton seleccionarColor;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables
 }

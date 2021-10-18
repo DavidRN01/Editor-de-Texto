@@ -6,12 +6,14 @@
 package com.mycompany.editordetexto;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,7 @@ public class Ventana extends javax.swing.JFrame {
     private JFileChooser fc = new JFileChooser();
     private File archivo;
     private Color colorFuente = Color.BLACK;
+    private String tamanhoFuente = "";
     
     /**
      * Creates new form Ventana
@@ -53,6 +56,9 @@ public class Ventana extends javax.swing.JFrame {
         colorChooser = new javax.swing.JDialog();
         colorSeleccionado = new javax.swing.JColorChooser();
         seleccionarColor = new javax.swing.JButton();
+        fontChooser = new javax.swing.JDialog();
+        fontSize = new javax.swing.JTextField();
+        seleccionarTamanho = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
@@ -88,6 +94,16 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         colorChooser.getContentPane().add(seleccionarColor, java.awt.BorderLayout.PAGE_END);
+
+        fontChooser.getContentPane().add(fontSize, java.awt.BorderLayout.CENTER);
+
+        seleccionarTamanho.setText("Seleccionar Tamaño");
+        seleccionarTamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionarTamanhoActionPerformed(evt);
+            }
+        });
+        fontChooser.getContentPane().add(seleccionarTamanho, java.awt.BorderLayout.PAGE_END);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +160,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu3.setText("Formato");
 
         fuente.setText("Fuente");
+        fuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fuenteActionPerformed(evt);
+            }
+        });
         jMenu3.add(fuente);
 
         color.setText("Color");
@@ -270,6 +291,29 @@ public class Ventana extends javax.swing.JFrame {
         
     }//GEN-LAST:event_seleccionarColorActionPerformed
 
+    private void fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuenteActionPerformed
+        
+        //Ajusto la ventana y la hago visible
+        fontChooser.setSize(100, 100);
+        fontChooser.setVisible(true);
+        
+        //Pongo en el texto el tamaño actual de la fuente
+        tamanhoFuente = ""+texto.getFont().getSize();
+        fontSize.setText(tamanhoFuente);
+        
+    }//GEN-LAST:event_fuenteActionPerformed
+
+    private void seleccionarTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarTamanhoActionPerformed
+        
+        //Convierto lo que haya escrito en el text field a entero
+        //y se lo paso a una nueva fuente
+        int t = parseInt(fontSize.getText());
+        Font f = new Font(texto.getFont().getName(), texto.getFont().getStyle(), t);
+        //Le pongo la nueva fuente al texto
+        texto.setFont(f);
+        
+    }//GEN-LAST:event_seleccionarTamanhoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,6 +359,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem color;
     private javax.swing.JDialog colorChooser;
     private javax.swing.JColorChooser colorSeleccionado;
+    private javax.swing.JDialog fontChooser;
+    private javax.swing.JTextField fontSize;
     private javax.swing.JMenuItem fuente;
     private javax.swing.JMenuItem guardar;
     private javax.swing.JMenuItem guardarComo;
@@ -331,6 +377,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem salir;
     private javax.swing.JButton seleccionarColor;
+    private javax.swing.JToggleButton seleccionarTamanho;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables
 }

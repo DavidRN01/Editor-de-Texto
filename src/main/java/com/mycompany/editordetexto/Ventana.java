@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 /**
  *
@@ -63,7 +64,6 @@ public class Ventana extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         autor = new javax.swing.JMenuItem();
 
-        hechoPor.setPreferredSize(new java.awt.Dimension(400, 200));
         hechoPor.getContentPane().setLayout(new javax.swing.BoxLayout(hechoPor.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jLabel1.setText("Hecho por David Ramos Navas");
@@ -106,6 +106,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(guardar);
 
         guardarComo.setText("Guardar como");
+        guardarComo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarComoActionPerformed(evt);
+            }
+        });
         jMenu1.add(guardarComo);
         jMenu1.add(jSeparator1);
 
@@ -205,6 +210,27 @@ public class Ventana extends javax.swing.JFrame {
         hechoPor.setVisible(true);
    
     }//GEN-LAST:event_autorActionPerformed
+
+    private void guardarComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarComoActionPerformed
+
+        //Ventana para seleccionar donde guardar
+        int status = fc.showSaveDialog(null);
+
+        //Al pulsar guardar el archivo pasa a ser el seleccionado
+        if (status == JFileChooser.APPROVE_OPTION) {
+            archivo = fc.getSelectedFile();
+        }
+        
+        //Escribo en un archivo nuevo lo que quiera guardar
+        try(FileWriter fw = new FileWriter(archivo, false)) {
+
+            fw.write(texto.getText());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_guardarComoActionPerformed
 
     /**
      * @param args the command line arguments
